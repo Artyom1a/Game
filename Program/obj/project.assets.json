@@ -32,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Code Main\\OOP10.02Game\\Program\\Program.csproj",
+      "projectUniqueName": "C:\\Code\\Education\\Git Game\\Game\\Program\\Program.csproj",
       "projectName": "Program",
-      "projectPath": "C:\\Code Main\\OOP10.02Game\\Program\\Program.csproj",
+      "projectPath": "C:\\Code\\Education\\Git Game\\Game\\Program\\Program.csproj",
       "packagesPath": "C:\\Users\\artyo\\.nuget\\packages\\",
-      "outputPath": "C:\\Code Main\\OOP10.02Game\\Program\\obj\\",
+      "outputPath": "C:\\Code\\Education\\Git Game\\Game\\Program\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\artyo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -53,8 +53,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Code Main\\OOP10.02Game\\CoreLibrary\\CoreLibrary.csproj": {
-              "projectPath": "C:\\Code Main\\OOP10.02Game\\CoreLibrary\\CoreLibrary.csproj"
+            "C:\\Code\\Education\\Git Game\\Game\\CoreLibrary\\CoreLibrary.csproj": {
+              "projectPath": "C:\\Code\\Education\\Git Game\\Game\\CoreLibrary\\CoreLibrary.csproj"
             }
           }
         }
