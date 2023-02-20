@@ -7,6 +7,8 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using CoreLibrary.Services;
+using CoreLibrary.Controller;
+using CoreLibrary.Repositories;
 
 namespace CoreLibrary.Repositories
 {
@@ -14,22 +16,90 @@ namespace CoreLibrary.Repositories
     {
         protected override string Path => "C:\\Code Main\\users.txt"; //возвращает каталог, из которого был загружен текущий домен приложения.
 
+        // Controller – метод, принимающий данные. Принимает данные 
+        // клиента
+        // Service – метод проверки на то что с Repository вернулось 
+        // значение
+        // Repository – метод, симулирующая БД. Хранит массив данных.
+        //  Взаимодействие с
+        // этим массивом осуществляется только в Repository. 
 
+        //public User Create(User adduser)
+        //{
+        //    List<User>? usersvse = GetAll();
+        //    UserService userService = new UserService();
+        //    adduser.Id = NextId();
+        //    for (int i = 0; i < usersvse.Count; i++)
+        //    {
+        //        if (usersvse[i].Name == adduser.Name && usersvse[i].Email == adduser.Email)
+        //        {
+        //            Console.WriteLine("Name or Email are registrated yet");
+        //            break;
+        //        }
+        //    }
+        //    usersvse.Add(adduser);
+        //    OverWritingFile(usersvse);
+        //    Console.WriteLine($"{adduser.Name} {adduser.Email}  done registration");
+        //    return adduser;
+        //}
+        public User GetByName(string name, string email) //переписать логику, чтобы по емайлу
+        {
+            var usersvse = GetAll();
+            for (int i = 0; i < usersvse.Count(); i++)
+            {
+                User usersvseLogin = usersvse.ElementAt(i);
+                if (usersvseLogin.Name.Equals(name) && usersvseLogin.Email.Equals(email))
+                {
+                    return usersvseLogin;
+                }
+            }
+            return null;
+        }
+        public bool Exist(string name, string email)
+        {
+            foreach (var user in GetAll())
+            {
+                if (user.Email.Equals(email) && user.Name.Equals(name))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
-        public User Add(User adduser) //создаём нового пользователя
+        //+
+        public User AddUserRepository(User adduser)
         {
 
             List<User>? usersvse = GetAll();
-            UserService userService = new UserService();
-
-            if (userService.AddUser(usersvse, adduser))
+           // UserService userService = new UserService();
+           //метод exist вместо 
+            for (int i = 0; i < usersvse.Count; i++)
             {
-                adduser.Id = NextId();
-                usersvse.Add(adduser);
-                OverWritingFile(usersvse);
-                Console.WriteLine($"{adduser.Name} {adduser.Email}  done registration");
+                if (usersvse[i].Name == adduser.Name && usersvse[i].Email == adduser.Email)
+                {
+                    Console.WriteLine("Name or Email are registrated yet");
+                    break;
+                }
             }
+            adduser.Id = NextId();
+            usersvse.Add(adduser);
+            OverWritingFile(usersvse);
+            Console.WriteLine($"{adduser.Name} {adduser.Email}  done registration");
             return adduser;
+        }
+        //+
+        public User Update(User user)
+        {
+            List<User> userList = GetAll().ToList();
+            int index = userList.FindIndex(x => x.Id == user.Id);
+            if (index < 0)
+            {
+                return null;
+            }
+            userList[index] = user;
+            OverWritingFile(userList);
+            return user;
         }
     }
 }
