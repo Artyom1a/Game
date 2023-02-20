@@ -67,7 +67,7 @@ namespace CoreLibrary.Repositories
                 {
                     if (usersvse[i] != null)
                     {
-                        string json = JsonSerializer.Serialize<T>(usersvse[i], serializeOptions);
+                        string json = JsonSerializer.Serialize(usersvse[i], serializeOptions);
                         sw1.WriteLine(json);
                     }
                 }
@@ -84,9 +84,8 @@ namespace CoreLibrary.Repositories
         {
             List<T> data = GetAll();
             data.RemoveAll(x => x.Id == id);
-            //метод updata 
+            OverWritingFile(data);
         }
-
 
     }
 }
