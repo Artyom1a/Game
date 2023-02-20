@@ -13,43 +13,125 @@ namespace CoreLibrary.Services
     public class UserService
     {
 
-        public bool AddUser(List<User> usersvse, User adduser)
+        UserRepository userRepsitory = new UserRepository();
+        public User Login(string name, string email, string password)
+        {
+            User user = userRepsitory.GetByName(name, email);
+            if (user != null && user.Password.Equals(password))
+            {
+                return user;
+            }
+            return null;
+        }
+        public User AddUser(string name, string email, string password)
         {
             try
             {
-                User adduser1 = new User(adduser.Id, adduser.Name, adduser.Email, adduser.Password);
-                if (string.IsNullOrEmpty(adduser.Name) || string.IsNullOrEmpty(adduser.Email) || string.IsNullOrEmpty(adduser.Password))
+                if (!userRepsitory.Exist(name,email))
                 {
-                    System.Console.WriteLine("error input");
-                    return false;
-                }
-                for (int i = 0; i < usersvse.Count; i++)
-                {
-
-                    if (usersvse[i].Name == adduser1.Name && usersvse[i].Email == adduser1.Email)
-                    {
-                        Console.WriteLine("Name or Email are registrated yet");
-                        return false;
-                    }
+                    User newUser = new User(name, email, password);
+                    return userRepsitory.AddUserRepository(newUser);
 
                 }
-                return true;
+                Console.WriteLine("Error");
+                return null;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                return false;
+                Console.WriteLine(ex);
+                return null;
             }
         }
+        public User? Update(User user, string password)
+        {
+
+            if (user == null) throw new ArgumentNullException(nameof(user));
+            try
+            {
+                user.Password = password;
+                return userRepsitory.Update(user);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return null;
+            }
+        }
+        public bool Delete(string email,string name)
+        {
+            try
+            {
+                if (!userRepsitory.Exist(name, email) )
+                {
+                    User delUser = new User(name, email);
+                     userRepsitory.Delete(delUser.Id);
+                    return true;
+
+                }
+                Console.WriteLine("This account does not exist.");
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return false;
+            }
+
+
+
+
+            //if (user == null) throw new ArgumentNullException(nameof(user));
+            //try
+            //{
+            //    userRepsitory.Delete(user.Id);
+            //    return true;
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex);
+            //    return false;
+            //}
+        }
     }
+
 }
 
 
-//for (int i = 0; i < uservse.Count; i++)
+
+
+
+
+
+
+
+
+
+//public User? Update(User user, string password)
 //{
-//    if (adduser.Email == email)//isnull
+
+//    if (user == null) throw new ArgumentNullException(nameof(user));
+//    try
 //    {
-//        System.Console.WriteLine("This email not available");
+//        user.Password = password;
+//        return _UserRepsitory.Update(user);
+//    }
+//    catch (Exception ex)
+//    {
+//        Console.WriteLine(ex);
+//        return null;
+//    }
+//}
+//public bool Delete(User user)
+//{
+//    if (user == null) throw new ArgumentNullException(nameof(user));
+//    try
+//    {
+//        _UserRepsitory.Delete(user.Id);
+//        return true;
+//    }
+//    catch (Exception ex)
+//    {
+//        Console.WriteLine(ex);
 //        return false;
 //    }
 //}
