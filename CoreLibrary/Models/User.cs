@@ -13,9 +13,22 @@ namespace CoreLibrary.Models
         public string Name { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        
 
-
+        public User()
+        {
+           
+        }
+        public User(string name, string email)
+        {
+            Name = name;
+            Email = email;
+        }
+        public User(string name, string email, string password)
+        {
+            Name = name;
+            Email = email;
+            Password = password;
+        }
         public User(int id, string name, string email, string password)
         {
             Id = id;
@@ -28,5 +41,7 @@ namespace CoreLibrary.Models
         {
             return $"{Id}  {Name} {Email} {Password}";
         }
+
+        public object Clone() => new User(Id, Email, Name, Password);
     }
 }
