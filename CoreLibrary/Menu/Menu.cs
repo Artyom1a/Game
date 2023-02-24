@@ -1,5 +1,6 @@
 ﻿using CoreLibrary.Models;
 using CoreLibrary.Controller;
+using GameSeaBattle;
 
 namespace CoreLibrary.Menu
 {
@@ -45,10 +46,12 @@ namespace CoreLibrary.Menu
                         {
                             case "0":
                                 return false;
-                            case "1": return true;
+                            case "1":
+                                FieldWar1 fieldWar = new FieldWar1();
+                                fieldWar.Display();
+                                return true;
                             case "2":
-                                UserController userController3 = new UserController();
-                                userController3.Delete();
+                                userController1.Delete(result1.Item2);
                                 return true;
                         }
                         return true;
