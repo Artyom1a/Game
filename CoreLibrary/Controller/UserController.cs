@@ -90,7 +90,7 @@ namespace CoreLibrary.Controller
             }
             return (true, null);
         }
-        public (bool, User) Delete()
+        public (bool, User) Delete(User user)
         {
 
             Console.WriteLine("Do you want to delete your account?  1- Yes, 2-No");
@@ -100,9 +100,7 @@ namespace CoreLibrary.Controller
                 Console.WriteLine("Warning, you are deleting your account!");
                 Console.Write("Write your Email: ");
                 string email = Console.ReadLine();
-                Console.Write("Write your Name: ");
-                string name = Console.ReadLine();
-                if (userscontroller.Delete(email, name))
+                if (userscontroller.Delete(email))
                 {
                     Console.WriteLine("You deleted your account");
                     return (false, null);
