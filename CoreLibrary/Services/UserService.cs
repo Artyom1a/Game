@@ -27,7 +27,7 @@ namespace CoreLibrary.Services
         {
             try
             {
-                if (!userRepsitory.Exist(name,email))
+                if (!userRepsitory.Exist(email).Item1)
                 {
                     User newUser = new User(name, email, password);
                     return userRepsitory.AddUserRepository(newUser);
@@ -57,14 +57,13 @@ namespace CoreLibrary.Services
                 return null;
             }
         }
-        public bool Delete(string email,string name)
+        public bool Delete(string email)
         {
             try
             {
-                if (!userRepsitory.Exist(name, email) )
+                if (userRepsitory.Exist(email).Item1)
                 {
-                    User delUser = new User(name, email);
-                     userRepsitory.Delete(delUser.Id);
+                    userRepsitory.Delete(userRepsitory.Exist(email).Item2.Id);
                     return true;
 
                 }
