@@ -55,16 +55,16 @@ namespace CoreLibrary.Repositories
             }
             return null;
         }
-        public bool Exist(string name, string email)
+        public (bool,User) Exist(string email)
         {
             foreach (var user in GetAll())
             {
-                if (user.Email.Equals(email) && user.Name.Equals(name))
+                if (user.Email.Equals(email))
                 {
-                    return true;
+                    return (true, user);
                 }
             }
-            return false;
+            return (false,null);
         }
 
         //+
