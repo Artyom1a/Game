@@ -1,5 +1,6 @@
 ﻿using System.Text;
-using GameDesktopApp.Core;
+using GameSeaBattle;
+
 
 namespace GameDesktopsApps;
 
@@ -7,8 +8,8 @@ public class Program
 {
     private static void Main(string[] args)
     {
-        FieldWar fieldWar = new FieldWar();
-        fieldWar.Display();
+        FieldWar1 fieldWar1 = new FieldWar1();
+        fieldWar1.Display();
 
 
     }
