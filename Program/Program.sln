@@ -9,6 +9,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{0294A1B2-5
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreLibrary", "..\CoreLibrary\CoreLibrary.csproj", "{1680D1D0-26A7-4B09-99F9-A03C00B3092C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Games", "Games", "{F6113A96-B279-4055-98B9-1D3B6202179B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Game.Core", "..\Game.Core\Game.Core.csproj", "{7693FBA7-B338-4877-92A9-D6B27D9F1D5A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameSeaBattle", "..\GameDesktopApp\GameSeaBattle.csproj", "{B918AE7F-4725-4E8B-8292-C1585B1FAC4C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,12 +29,22 @@ Global
 		{1680D1D0-26A7-4B09-99F9-A03C00B3092C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1680D1D0-26A7-4B09-99F9-A03C00B3092C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1680D1D0-26A7-4B09-99F9-A03C00B3092C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7693FBA7-B338-4877-92A9-D6B27D9F1D5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7693FBA7-B338-4877-92A9-D6B27D9F1D5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7693FBA7-B338-4877-92A9-D6B27D9F1D5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7693FBA7-B338-4877-92A9-D6B27D9F1D5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B918AE7F-4725-4E8B-8292-C1585B1FAC4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B918AE7F-4725-4E8B-8292-C1585B1FAC4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B918AE7F-4725-4E8B-8292-C1585B1FAC4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B918AE7F-4725-4E8B-8292-C1585B1FAC4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1680D1D0-26A7-4B09-99F9-A03C00B3092C} = {0294A1B2-557A-488A-A21D-ADD1DEC72A7C}
+		{7693FBA7-B338-4877-92A9-D6B27D9F1D5A} = {F6113A96-B279-4055-98B9-1D3B6202179B}
+		{B918AE7F-4725-4E8B-8292-C1585B1FAC4C} = {F6113A96-B279-4055-98B9-1D3B6202179B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {941306E0-1619-400E-8ACA-926EEDF27618}

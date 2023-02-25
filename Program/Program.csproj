@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CoreLibrary\CoreLibrary.csproj" />
+    <ProjectReference Include="..\GameDesktopApp\GameSeaBattle.csproj" />
   </ItemGroup>
 
 </Project>
