@@ -4,15 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameDesktopApp.Core
+namespace GameSeaBattle
 {
-    public class FieldWar
+
+    public class FieldWar1
     {
         public string[] StrTopBottom = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j" };
         public string[] StrLeftRight = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" };
         public string Ship;
 
-        public FieldWar()
+        public FieldWar1()
         {
 
         }
@@ -40,8 +41,8 @@ namespace GameDesktopApp.Core
                 for (int j = 0; j < 10; j++)  // в этом цикле отрисовка основного поля строки 
                 {
                     //ShipOnDisplay();
-                    if (Ship=="-")
-                    Console.Write("- ");
+                    if (Ship == "-")
+                        Console.Write("- ");
                 } // в этом цикле отрисовка основного поля строки 
             }
         }
