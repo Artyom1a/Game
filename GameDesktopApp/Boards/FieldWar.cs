@@ -19,7 +19,7 @@ namespace GameSeaBattle.Boards
         public int Step = new int();
         public int[] Letter = new int[101];
         public int[] Index = new int[101];
-        
+        public int Points = 0;
         public static int Indent = 2;
         public int Number = 0;
 
@@ -56,7 +56,7 @@ namespace GameSeaBattle.Boards
 
                 for (int j = 0; j < StrTopBottom.Length; j++) // в этом цикле отрисовка основного поля строки //+--
                 {
-                    DisplayIcons(UserField[i, j]); 
+                    DisplayIcons(UserField[i, j]);
                     Console.Write(" ");
                 } // в этом цикле отрисовка основного поля строки //+-- нужно 
             }
@@ -84,7 +84,7 @@ namespace GameSeaBattle.Boards
 
                 for (int j = 0; j < StrTopBottom.Length; j++) // в этом цикле отрисовка основного 2 поля строки //+--
                 {
-                    DisplayIcons(Field[i, j]); 
+                    DisplayIcons(Field[i, j]);
                     Console.Write(" ");
                 } // в этом цикле отрисовка основного 2 поля строки //+
             }
