@@ -36,7 +36,111 @@ namespace GameSeaBattle.Players
             }
         }
 
-       
+        public void Strike()
+        {
+            if (Win())
+            {
+                return;
+            }
+            Console.SetCursorPosition(30, Indent++);
+            Console.WriteLine("shot №: " + ++Step);
+            Boolean letter = true;
+            while (letter)
+            {
+                Console.SetCursorPosition(30, Indent++);
+                Console.Write("your shot: ");
+                switch (Console.Read())
+                {
+                    case 'a':
+                        Letter[Step] = 0;
+                        letter = false;
+                        break;
+                    case 'b':
+                        Letter[Step] = 1;
+                        letter = false;
+                        break;
+                    case 'c':
+                        Letter[Step] = 2;
+                        letter = false;
+                        break;
+                    case 'd':
+                        Letter[Step] = 3;
+                        letter = false;
+                        break;
+                    case 'e':
+                        Letter[Step] = 4;
+                        letter = false;
+                        break;
+                    case 'f':
+                        Letter[Step] = 5;
+                        letter = false;
+                        break;
+                    case 'g':
+                        Letter[Step] = 6;
+                        letter = false;
+                        break;
+                    case 'h':
+                        Letter[Step] = 7;
+                        letter = false;
+                        break;
+                    case 'i':
+                        Letter[Step] = 8;
+                        letter = false;
+                        break;
+                    case 'j':
+                        Letter[Step] = 9;
+                        letter = false;
+                        break;
+                }
+            }
+            Index[Step] = Convert.ToInt32(Console.ReadLine()) - 1;
+            if (Hit(Index[Step], Letter[Step]))
+            {
+                Points++;
+                Strike();
+            }
+        }
+
+        public bool Hit(int i, int j)
+        {
+            if (BotField[i, j] == 0)
+            {
+                BotField[i, j] = 3;
+                CopyFieldWar[i, j] = 3;
+                Display(CopyFieldWar);
+                Console.SetCursorPosition(30, 0);
+                Console.Write("miss!   ");
+                return false;
+            }
+            if (BotField[i, j] == 1)
+            {
+                BotField[i, j] = 2;
+                CopyFieldWar[i, j] = 2;
+                Strike(BotField, i, j);
+                Display(CopyFieldWar);
+                Console.SetCursorPosition(30, 0);
+                Console.Write("hit!");
+                return true;
+            }
+            Console.SetCursorPosition(30, 0);
+            Console.Write("Can't shoot this cage");
+            Console.SetCursorPosition(30, 4);
+            Console.WriteLine();
+            Step--;
+            return true;
+        }
+
+        public bool Win()
+        {
+            if (Points == 20)
+            {
+                Console.SetCursorPosition(10, 0);
+                Console.Write("You win!");
+                return true;
+            }
+            return false;
+        }
+
         private void Four()
         {
             var random = new Random();

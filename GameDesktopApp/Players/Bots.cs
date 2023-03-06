@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace GameSeaBattle.Players
 {
-        public class Bots : FieldWar
+
+    public class Bots : FieldWar
     {
         public Bots()
         {
@@ -29,6 +30,23 @@ namespace GameSeaBattle.Players
             }
         }
 
+        public void Strike()
+        {
+            if (Win())
+            {
+                return;
+            }
+            Random();
+            Console.SetCursorPosition(30, Indent++);
+            Console.WriteLine("Enemy shot: " + StrTopBottom[Letter[Step]] + (Index[Step] + 1));
+            if (Hit(Index[Step], Letter[Step]))
+            {
+                Step++;
+                Points++;
+                Strike();
+            }
+        }
+
         private void Random()
         {
             var random = new Random(DateTime.Now.Millisecond);
@@ -41,7 +59,39 @@ namespace GameSeaBattle.Players
             }
         }
 
- 
+        public bool Hit(int i, int j)
+        {
+            if (UserField[i, j] == 0)
+            {
+                CopyFieldWar[i, j] = 3;
+                UserField[i, j] = 3;
+                return false;
+            }
+            if (UserField[i, j] == 1)
+            {
+                CopyFieldWar[i, j] = 2;
+                UserField[i, j] = 2;
+                Strike(UserField, i, j);
+                return true;
+            }
+            if (UserField[i, j] > 1)
+            {
+                return false;
+            }
+            return false;
+        }
+
+        public bool Win()
+        {
+            if (Points == 20)
+            {
+                Console.SetCursorPosition(10, 0);
+                Console.Write("You lose!");
+                return true;
+            }
+            return false;
+        }
+
         private void Four()
         {
             var random = new Random();
@@ -413,4 +463,5 @@ namespace GameSeaBattle.Players
             Number++;
         }
     }
+
 }
