@@ -15,41 +15,41 @@ namespace CoreLibrary.Controller
 
         public bool GetAllStats()
         {
-            List<UserStatistic> stats = userStatisticsService.GetAllStats();
-            if (stats == null)
+            List<UserStatistic> statistics = userStatisticsService.GetAllStats();
+            if (statistics == null)
             {
-                Console.WriteLine($"Statistic yet no");
+                Console.WriteLine($"No results");
                 return false;
             }
-            for (int i = 0; i < stats.Count; i++)
+            for (int i = 0; i < statistics.Count; i++)
             {
-                Console.WriteLine(stats[i]);
+                Console.WriteLine(statistics[i]);
             }
             return true;
         }
 
-        public bool GetUserStat(Models.User user)
+        public bool GetUserStatistics(User user)
         {
-            List<UserStatistic> stats = userStatisticsService.GetStatsUser(user.Id);
-            if (stats == null)
+            List<UserStatistic> statistics = userStatisticsService.GetStatsUser(user.Id);
+            if (statistics == null)
             {
-                Console.WriteLine($"Statistic {user.Name} no");
+                Console.WriteLine($"No results");
                 return false;
             }
-            for (int i = 0; i < stats.Count; i++)
+            for (int i = 0; i < statistics.Count; i++)
             {
-                Console.WriteLine($"User {user.Name} {stats[i]}");
+                Console.WriteLine($"{user.Name} {statistics[i]}");
             }
             return true;
         }
 
 
-        public bool AddUserStat(Models.User user, string gameResult, string gameName)
+        public bool AddUserStat(User user, string resultStatistics, string denotationgame= "BattleShip")
         {
-            if (user != null && gameResult != null)
+            if (user != null && resultStatistics != null)
             {
-                UserStatistic stats = new UserStatistic(user.Id, gameResult, gameName);
-                userStatisticsService.AddUserStats(stats);
+                UserStatistic statistics = new UserStatistic(user.Id, resultStatistics, denotationgame);
+                userStatisticsService.AddUserStats(statistics);
                 return true;
             }
             return false;
