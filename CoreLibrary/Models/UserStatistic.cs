@@ -9,21 +9,19 @@ namespace CoreLibrary.Models
     public class UserStatistic : IData
     {
         public int Id { get; set; }
-        public string GameSaveStat { get; set; }
-        public string GameName { get; set; }
-        public DateTime Time = DateTime.Now;
-        
+        public string ResultStatisticsUser { get; set; }
+        public string DenotationGame { get; set; }
 
-        public UserStatistic(int id, string gameSaveStat,string gameName)
+        public UserStatistic(int id, string resultStatisticsUser,string denotationGame)
         {
             this.Id = id;
-            this.GameSaveStat = gameSaveStat;
-            this.GameName = gameName;
+            this.ResultStatisticsUser = resultStatisticsUser;
+            this.DenotationGame = denotationGame;
         }
 
         public override string ToString()
         {
-            return $"{Id} {GameName} result: {GameSaveStat} {Time}";
+            return $"User.Id - {Id}, DenotationGame-{DenotationGame} ResultStatisticsUser: {ResultStatisticsUser}";
         }
 
     }
