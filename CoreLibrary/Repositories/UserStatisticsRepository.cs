@@ -13,26 +13,26 @@ namespace CoreLibrary.Repositories
     {
         protected override string Path => "C:\\Code Main\\usersstatistic.txt";
 
-        public void AddUserStats(UserStatistic userStats)
+        public void AddUserStats(UserStatistic resultStatisticsUser)
         {
-            if (userStats == null) throw new ArgumentNullException(nameof(userStats));
+            if (resultStatisticsUser == null) throw new ArgumentNullException(nameof(resultStatisticsUser));
             List<UserStatistic> users = GetAll().ToList();
-            users.Add(userStats);
+            users.Add(resultStatisticsUser);
             OverWritingFile(users);
         }
 
         public List<UserStatistic> GetUserStats(int id)
         {
             List<UserStatistic> users = GetAll().ToList();
-            List<UserStatistic> stats = new List<UserStatistic>();
+            List<UserStatistic> statistics = new List<UserStatistic>();
             for (int i = 0; i < users.Count; i++)
             {
                 if (users[i].Id == id)
                 {
-                    stats.Add(users[i]);
+                    statistics.Add(users[i]);
                 }
             }
-            return stats;
+            return statistics;
         }
 
         public List<UserStatistic> GetAllStats()
