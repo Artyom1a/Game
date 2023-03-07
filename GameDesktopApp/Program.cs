@@ -14,19 +14,38 @@ public class Program
 {
     private static void Main(string[] args)
     {
-
-
         Console.Title = "Battle Ship";
+        
         var User = new Users();
         var Bot = new Bots();
-        int yes = 0;
-
-        while (yes < 1)
+        Boolean yes = true;
+        while (yes)
         {
-
-            User.Display(User.CopyFieldWar);
-            yes++;
-
+            while (true)
+            {
+                User.Display(User.CopyFieldWar);
+                User.Strike();
+                if (User.Win())
+                {
+                    
+                    break;
+                }
+                Bot.Strike();
+                if (Bot.Win())
+                {
+                   
+                    break;
+                }
+            }
+            Console.SetCursorPosition(30, 1);
+            Console.WriteLine("Thanks for playing! Do you want to play again? ");
+            if (Console.ReadLine() != "Yes")
+            {
+                Console.Clear();
+                yes = false;
+            }
         }
+
     }
+
 }
