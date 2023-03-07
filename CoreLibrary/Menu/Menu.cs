@@ -3,6 +3,8 @@ using CoreLibrary.Controller;
 using GameSeaBattle;
 using GameSeaBattle.Boards;
 using GameSeaBattle.Players;
+using Games.Core;
+using GameDesktopsApps;
 
 namespace CoreLibrary.Menu
 {
@@ -56,37 +58,11 @@ namespace CoreLibrary.Menu
                                 switch (Console.ReadLine())
                                 {
                                     case "1":
-                                                                             
-                                        UserStatisticsController statistics1 = new UserStatisticsController();
-                                        statistics1.AddUserStat(result1.Item2,  "BattleShip");
-                                        Console.Title = "Battle Ship";
-                                        var User = new Users();
-                                        var Bot = new Bots();
-                                        Boolean yes = true;
-                                        while (yes)
-                                        {
-                                            while (true)
-                                            {
-                                                User.Display(User.CopyFieldWar);
-                                                User.Strike();
-                                                if (User.Win())
-                                                {
-                                                    break;
-                                                }
-                                                Bot.Strike();
-                                                if (Bot.Win())
-                                                {
-                                                    break;
-                                                }
-                                            }
-                                            Console.SetCursorPosition(30, 1);
-                                            Console.WriteLine("Thanks for playing! Do you want to play again? ");
-                                            if (Console.ReadLine() != "Yes")
-                                            {
-                                                Console.Clear();
-                                                yes = false;
-                                            }
-                                        }
+                                        Console.Clear();
+                                        GamesCore BattleShip = new GamesCore(result1.Item2.Id);
+                                        BattleShip.Menu();
+                                        UserStatisticsController statistics = new UserStatisticsController();
+                                        statistics.AddUserStat(result1.Item2, BattleShip.ResultStatistics);
                                         return true;
                                 }
                                 return true;
@@ -94,9 +70,9 @@ namespace CoreLibrary.Menu
                                 userController1.Delete(result1.Item2);
                                 return true;
                             case "3":
-
-                                UserStatisticsController statistics = new UserStatisticsController();
-                                statistics.GetUserStat(result1.Item2);
+                                Console.Clear();
+                                UserStatisticsController statistics1 = new UserStatisticsController();
+                                statistics1.GetUserStatistics(result1.Item2);
                                 return true;
                         }
                         return true;
